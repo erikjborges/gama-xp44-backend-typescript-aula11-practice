@@ -123,6 +123,35 @@ export class ClientsRepository implements IClientsRepository {
 
         return resource;
     }
+
+    async groupUsersByCep(cep: string): Promise<{
+        cep: string,
+        numPF: number,
+        numPJ: number
+    }>{
+       const userByCep = await this._database.selectQuery(
+            `
+            SELECT p.cep, COUNT(DISTINCT pf.idpessoas_fisicas) AS numPF, COUNT(DISTINCT pj.idpessoas_juridicas) AS numPJ
+            FROM pessoas p
+            LEFT JOIN pessoas_fisicas pf ON pf.idpessoa = p.idpessoa
+            LEFT JOIN pessoas_juridicas pj ON pj.idpessoa = p.idpessoa
+            WHERE p.cep = :cep
+            `,
+            {
+                cep
+            }
+        );
+       
+        if(userByCep[0].cep){
+            return userByCep[0];
+        } else {
+            return {
+                cep: cep,
+                numPF: 0,
+                numPJ: 0
+            }
+        }
+    }
 }
 
 export default new ClientsRepository(

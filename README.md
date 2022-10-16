@@ -35,3 +35,17 @@
 
   - tsc && npx sequelize db:seed:all
   - tsc && npx sequelize db:seed:undo:all
+
+- Raw-queries
+
+ - Criação de query direto no banco
+ 
+ - Criação de método de selectQuery no mysql.database
+
+ - Criação de serviço dentro do client.repository
+
+ - Criação do useCase
+
+ - Criação do método no controller
+
+ - Criação da rota

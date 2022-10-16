@@ -24,6 +24,11 @@ export class ClientsRoutes extends CommonRoutesConfig {
                     ClientsController.createClientBulk,
                 );
 
+            this.app.route(`/clients/cep/:cep`)
+                    .get(
+                        ClientsController.clientsByCep
+                    );
+
             this.app.route(`/clients/:clientId`)
                         .all(ClientsMiddleware.validateClientExists)
                         .get(ClientsController.getClientById)
