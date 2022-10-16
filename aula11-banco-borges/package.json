@@ -1,7 +1,7 @@
 {
-  "name": "aula09-banco-borges",
+  "name": "aula10-banco-borges",
   "version": "1.0.0",
-  "description": "Aula 09 da trilha de backend avançado da Gama, XP 44. Demonstração de como trabalhar com upload e arquivos.",
+  "description": "Aula 09 da trilha de backend avançado da Gama, XP 44. Demonstração de como trabalhar com migrations, seeders e raw-queries.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
